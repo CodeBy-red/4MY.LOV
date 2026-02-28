@@ -59,10 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // TEXTO DIGITANDO
   const texto = "Foi ali que eu percebi que você não era comum.";
   let i = 0;
+  const digitandoEl = document.getElementById("digitando");
 
   function digitar() {
-    if (i < texto.length) {
-      document.getElementById("digitando").innerHTML += texto.charAt(i);
+    if (digitandoEl && i < texto.length) {
+      digitandoEl.innerHTML += texto.charAt(i);
       i++;
       setTimeout(digitar, 50);
     }
@@ -75,6 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const contador = document.getElementById("contador");
 
   function atualizarContador() {
+    if (!contador) return;
+
     const agora = new Date();
     const dias = Math.floor((agora - inicio) / (1000 * 60 * 60 * 24));
     contador.innerText =
@@ -83,17 +86,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   atualizarContador();
 
-  // MÚSICA
+  // MÚSICA (só executa se existir no HTML)
   const botaoMusica = document.getElementById("ativarMusica");
   const musica = document.getElementById("musica");
 
-  botaoMusica.addEventListener("click", function () {
-    musica.play().catch(() => {});
-    botaoMusica.style.display = "none";
-  });
+  if (botaoMusica && musica) {
+    botaoMusica.addEventListener("click", function () {
+      musica.play().catch(() => {});
+      botaoMusica.style.display = "none";
+    });
+  }
 
   // ESTRELA NO TOQUE
   document.addEventListener("touchstart", function (e) {
+    if (!e.touches || !e.touches[0]) return;
+
     const estrela = document.createElement("div");
     estrela.className = "estrela";
     estrela.style.left = e.touches[0].clientX + "px";
@@ -102,22 +109,22 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => estrela.remove(), 1000);
   });
 
-  // 3 TOQUES SECRETO
-  let toques = 0;
-  let tempo;
+  // ATIVAR BOTÃO SECRETO NO FINAL
+  const finalSection = document.querySelector(".final");
+  const botaoSecreto = document.getElementById("botaoSecreto");
 
-  document.addEventListener("touchstart", () => {
-    toques++;
-    clearTimeout(tempo);
+  function verificarFinal() {
+    if (!finalSection || !botaoSecreto) return;
 
-    tempo = setTimeout(() => {
-      toques = 0;
-    }, 800);
+    const pos = finalSection.getBoundingClientRect().top;
+    const alturaTela = window.innerHeight;
 
-    if (toques === 3) {
-      alert("Você encontrou algo especial 💎");
-      toques = 0;
+    if (pos < alturaTela - 100) {
+      botaoSecreto.classList.add("ativo");
     }
-  });
+  }
+
+  window.addEventListener("scroll", verificarFinal);
+  verificarFinal();
 
 });
