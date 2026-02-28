@@ -41,6 +41,18 @@
     <p>Muito mesmo.</p>
   </section>
 
-  <script src="script.js"></script>
+  <!-- BOTÃO SECRETO -->
+  <div id="botaoSecreto" aria-hidden="true"></div>
+
+  <!-- MENSAGEM SECRETA -->
+  <div id="mensagemSecreta" style="display: none;">
+    <div class="caixaMensagem">
+      <p>Você descobriu o que quase ninguém percebe... 💫</p>
+      <button id="fecharMensagem" type="button">Fechar</button>
+    </div>
+  </div>
+
+  <!-- JS carregado com defer para evitar erro de execução antes do DOM -->
+  <script src="script.js" defer></script>
 </body>
 </html>
