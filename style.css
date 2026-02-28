@@ -5,22 +5,30 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   background: #050510;
   color: white;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  position: relative; /* evita bugs de stacking */
 }
 
 canvas {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;      /* garante cobertura total */
+  height: 100%;     /* garante cobertura total */
   z-index: -1;
+  pointer-events: none; /* evita bloquear toques */
 }
 
 .bloco {
-  height: 100vh;
+  min-height: 100vh; /* mais seguro que height fixa */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,7 +58,7 @@ button {
 .fade {
   opacity: 0;
   transform: translateY(40px);
-  transition: all 1s ease;
+  transition: opacity 1s ease, transform 1s ease; /* mais performático */
 }
 
 .fade.aparecer {
@@ -66,9 +74,48 @@ button {
   border-radius: 50%;
   pointer-events: none;
   animation: explodir 1s forwards;
+  z-index: 5; /* evita ficar atrás do canvas */
 }
 
 @keyframes explodir {
   0% { opacity: 1; transform: scale(1); }
   100% { opacity: 0; transform: scale(4); }
+}
+
+/* BOTÃO INVISÍVEL */
+#botaoSecreto {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: rgba(199,125,255,0.3);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+  transition: opacity 0.5s ease;
+}
+
+/* Quando ativado */
+#botaoSecreto.ativo {
+  opacity: 1;
+  pointer-events: auto;
+  animation: pulsar 1.5s infinite;
+}
+
+/* Animação de pulsar */
+@keyframes pulsar {
+  0% {
+    box-shadow: 0 0 5px #c77dff;
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px #c77dff;
+    transform: scale(1.2);
+  }
+  100% {
+    box-shadow: 0 0 5px #c77dff;
+    transform: scale(1);
+  }
 }
