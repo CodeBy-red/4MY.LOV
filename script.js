@@ -39,3 +39,26 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+// -------- LIGHTBOX IMAGEM --------
+
+const imagens = document.querySelectorAll(".post img");
+
+const lightbox = document.createElement("div");
+lightbox.classList.add("lightbox");
+
+const imgGrande = document.createElement("img");
+
+lightbox.appendChild(imgGrande);
+document.body.appendChild(lightbox);
+
+imagens.forEach(img => {
+  img.addEventListener("click", () => {
+    imgGrande.src = img.src;
+    lightbox.style.display = "flex";
+  });
+});
+
+lightbox.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
