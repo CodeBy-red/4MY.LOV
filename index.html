@@ -3,56 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para Você ✨</title>
-
+  <title>Seu Lugar Seguro</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <canvas id="galaxy"></canvas>
+  <header class="hero">
+    <h1>Um lugar seguro 🌙</h1>
+    <p>Quando o mundo ficar pesado, volta aqui.</p>
+  </header>
 
-  <section class="bloco hero">
-    <h1 class="brilho">Oi bebê!</h1>
-    <p>Deslize devagar 💫</p>
-  </section>
+  <main>
 
-  <section class="bloco fade">
-    <h2>Você apareceu...</h2>
-    <p>E o mundo ficou um pouco diferente.</p>
-  </section>
+    <section class="post fade">
+      <img src="images/nosso-lanche.jpeg" alt="Nosso primeiro lanche juntos">
+      <div class="texto">
+        <h2>Nosso primeiro lanche juntos</h2>
+        <p>Você transforma qualquer momento comum em algo que vale a pena guardar.</p>
+      </div>
+    </section>
 
-  <section class="bloco fade">
-    <h2>Lembra daquele dia?</h2>
-    <p id="digitando"></p>
-  </section>
+    <section class="post fade">
+      <img src="images/sorrindo-liv.jpeg" alt="Você sorrindo">
+      <div class="texto">
+        <h2>Seu sorriso</h2>
+        <p>Tem dias que ele foi literalmente a melhor coisa que me aconteceu.</p>
+      </div>
+    </section>
 
-  <section class="bloco fade">
-    <h2>Desde então...</h2>
-    <p id="contador"></p>
-  </section>
+    <section class="post fade">
+      <img src="images/combinando-pulseiras.jpeg" alt="Nossas pulseiras combinando">
+      <div class="texto">
+        <h2>Olha nossas pulseirinhas</h2>
+        <p>Mesmo saindo só de prata, eu não deixo de sair com a pulseira ou o colar que temos.</p>
+      </div>
+    </section>
 
-  <section class="bloco fade">
-    <h2>Você é importante.</h2>
-    <p>Mais do que tudo que há de existente, temos um dicionário com 380.000 palavras, mas nenhuma delas é capaz de descrever o tamanho da minha felicidade após você voltar para minha vida, após conversarmos normalmente e eu poder te dizer o quanto você fez falta, o quanto senti saudade, acho que nunca irá existir uma palavra, uma expressão ou gíria que possa dizer com exatidão, meu amor por você!.</p>
-  </section>
+  </main>
 
-  <section class="bloco fade final">
-    <h2>Eu amo muito você!!</h2>
-    <p>Muito mesmo.</p>
-  </section>
+  <section class="mensagemEspecial">
+    <button id="botaoCarinho">Se hoje estiver difícil, toca aqui 🤍</button>
 
-  <!-- BOTÃO SECRETO -->
-  <div id="botaoSecreto" aria-hidden="true"></div>
-
-  <!-- MENSAGEM SECRETA -->
-  <div id="mensagemSecreta" style="display: none;">
-    <div class="caixaMensagem">
-      <p>Você descobriu o que quase ninguém percebe... 💫</p>
-      <button id="fecharMensagem" type="button">Fechar</button>
+    <div id="mensagem" class="caixaMensagem">
+      <div class="conteudoMensagem">
+        <p id="textoMensagem"></p>
+        <button id="fechar">Fechar</button>
+      </div>
     </div>
-  </div>
 
-  <!-- JS carregado com defer para evitar erro de execução antes do DOM -->
-  <script src="script.js" defer></script>
+  </section>
+
+  <footer>
+    Feito com cuidado.
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
