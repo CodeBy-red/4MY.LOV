@@ -6,9 +6,26 @@ font-family:"Segoe UI",Arial;
 }
 
 body{
-background:linear-gradient(180deg,#0f0f1a,#1a1a2e);
 color:#fff;
 text-align:center;
+
+/* IMAGEM DE FUNDO */
+
+background-image:url("images/background.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment:fixed;
+}
+
+/* CAMADA ESCURA PARA LEITURA */
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.45);
+z-index:-1;
 }
 
 /* HEADER */
@@ -23,7 +40,7 @@ margin-bottom:8px;
 }
 
 .hero p{
-opacity:.7;
+opacity:.8;
 }
 
 /* GRID PRINCIPAL */
@@ -56,13 +73,22 @@ grid-template-columns:repeat(4,1fr);
 /* CARD */
 
 .post{
-background:#1c1c2e;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
 border-radius:18px;
 overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,.4);
+box-shadow:0 10px 30px rgba(0,0,0,.5);
+
 opacity:0;
 transform:translateY(40px);
 transition:.6s;
+}
+
+/* HOVER BONITO */
+
+.post:hover{
+transform:translateY(-6px) scale(1.02);
+box-shadow:0 20px 40px rgba(0,0,0,.6);
 }
 
 /* IMAGEM */
@@ -97,7 +123,7 @@ margin-bottom:6px;
 
 .texto p{
 font-size:13px;
-opacity:.8;
+opacity:.9;
 }
 
 /* ANIMAÇÃO */
@@ -116,14 +142,16 @@ padding:50px 20px;
 #botaoCarinho{
 padding:14px 24px;
 border-radius:30px;
-border:1px solid rgba(255,255,255,.2);
-background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.25);
+background:rgba(255,255,255,.08);
 color:#fff;
 cursor:pointer;
+transition:.3s;
 }
 
 #botaoCarinho:hover{
-transform:scale(1.05);
+transform:scale(1.08);
+background:rgba(255,255,255,.15);
 }
 
 /* MODAL */
@@ -141,7 +169,8 @@ align-items:center;
 }
 
 .conteudoMensagem{
-background:#1c1c2e;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
 padding:30px;
 border-radius:20px;
 max-width:320px;
@@ -159,7 +188,7 @@ cursor:pointer;
 
 footer{
 padding:40px;
-opacity:.5;
+opacity:.6;
 font-size:12px;
 }
 
