@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  /* -------------------------
+     ANIMAÇÃO AO ROLAR
+  ------------------------- */
+
   const posts = document.querySelectorAll(".post");
 
   const observer = new IntersectionObserver((entries) => {
@@ -13,6 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
   posts.forEach(post => {
     observer.observe(post);
   });
+
+
+  /* -------------------------
+     FRASES CARINHOSAS
+  ------------------------- */
 
   const frases = [
     "Você não precisa ser forte o tempo todo.",
@@ -38,27 +47,30 @@ document.addEventListener("DOMContentLoaded", () => {
     caixa.style.display = "none";
   });
 
-});
 
-// -------- LIGHTBOX IMAGEM --------
+  /* -------------------------
+     LIGHTBOX PARA IMAGENS
+  ------------------------- */
 
-const imagens = document.querySelectorAll(".post img");
+  const imagens = document.querySelectorAll(".post img");
 
-const lightbox = document.createElement("div");
-lightbox.classList.add("lightbox");
+  const lightbox = document.createElement("div");
+  lightbox.classList.add("lightbox");
 
-const imgGrande = document.createElement("img");
+  const imgGrande = document.createElement("img");
 
-lightbox.appendChild(imgGrande);
-document.body.appendChild(lightbox);
+  lightbox.appendChild(imgGrande);
+  document.body.appendChild(lightbox);
 
-imagens.forEach(img => {
-  img.addEventListener("click", () => {
-    imgGrande.src = img.src;
-    lightbox.style.display = "flex";
+  imagens.forEach(img => {
+    img.addEventListener("click", () => {
+      imgGrande.src = img.src;
+      lightbox.style.display = "flex";
+    });
   });
-});
 
-lightbox.addEventListener("click", () => {
-  lightbox.style.display = "none";
+  lightbox.addEventListener("click", () => {
+    lightbox.style.display = "none";
+  });
+
 });
